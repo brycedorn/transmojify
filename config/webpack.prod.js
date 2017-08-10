@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const EmojiLoader = require('extract-text-webpack-plugin');
 
 const srcDir = path.resolve(__dirname, '..', 'src');
 const distDir = path.resolve(__dirname, '..', 'dist');
@@ -51,10 +52,13 @@ module.exports = {
         // the code to ES5. I don't want you to look into the node_modules folder.
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [{
-          loader: 'babel-loader',
-          options: { presets: ['es2015', 'react'] }
-        }],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: { presets: ['es2015', 'react'] }
+          },
+          'emoji-loader'
+        ],
       },
       {
         test: /\.(s?)css$/,
