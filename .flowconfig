@@ -1,0 +1,11 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/.*
+
+[include]
+<PROJECT_ROOT>/node_modules/react/react.js
+<PROJECT_ROOT>/node_modules/react/lib/React.js
+<PROJECT_ROOT>/node_modules/react/lib/ReactDOM.js
+
+[libs]
+
+[options]
