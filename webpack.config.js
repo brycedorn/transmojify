@@ -1,7 +1,7 @@
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV || 'development'
 
-function buildConfig(env) {
-  return require('./config/webpack.' + env + '.js');
+function buildConfig (env) {
+  return require('./config/webpack.' + env + '.js')
 }
 
-module.exports = buildConfig(env === 'production' ? 'prod': 'dev');
+module.exports = buildConfig(env === 'production' ? 'prod' : 'dev')

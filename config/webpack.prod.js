@@ -1,11 +1,10 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const EmojiLoader = require('extract-text-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
-const srcDir = path.resolve(__dirname, '..', 'src');
-const distDir = path.resolve(__dirname, '..', 'dist');
+const srcDir = path.resolve(__dirname, '..', 'src')
+const distDir = path.resolve(__dirname, '..', 'dist')
 
 module.exports = {
   // Where to fine the source code
@@ -15,7 +14,7 @@ module.exports = {
   devtool: 'hidden-source-map',
 
   entry: [
-    './index.js',
+    './index.js'
   ],
 
   output: {
@@ -28,7 +27,7 @@ module.exports = {
 
     // Wherever resource (css, js, img) you call <script src="..."></script>,
     // or css, or img use this path as the root
-    publicPath: '/',
+    publicPath: '/'
 
     // At some point you'll have to debug your code, that's why I'm giving you
     // for free a source map file to make your life easier
@@ -56,9 +55,8 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: { presets: ['es2015', 'react'] }
-          },
-          'emoji-loader'
-        ],
+          }
+        ]
       },
       {
         test: /\.(s?)css$/,
@@ -66,8 +64,8 @@ module.exports = {
           'style-loader',
           'css-loader',
           'postcss-loader',
-          'sass-loader',
-        ],
+          'sass-loader'
+        ]
       },
       {
         test: /\.(jpg|jpeg|png|gif|ico|svg)$/,
@@ -75,10 +73,9 @@ module.exports = {
         query: {
           // if less, bundle the asset inline, if greater, copy it to the dist/assets folder using file-loader
           limit: 10000,
-
           name: 'assets/[name].[hash].[ext]'
-        },
-      },
+        }
+      }
     ]
   },
 
@@ -87,8 +84,8 @@ module.exports = {
 
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-      },
+        NODE_ENV: JSON.stringify('production')
+      }
     }),
 
     new webpack.LoaderOptionsPlugin({
@@ -120,6 +117,6 @@ module.exports = {
     }),
 
     // Put all css code in this file
-    new ExtractTextPlugin('app-[hash].css'),
-  ],
-};
+    new ExtractTextPlugin('app-[hash].css')
+  ]
+}

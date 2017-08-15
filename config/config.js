@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 
 module.exports = {
   apiKey: process.env.apiKey,
@@ -6,5 +6,5 @@ module.exports = {
   databaseURL: process.env.databaseURL,
   projectId: process.env.projectId,
   storageBucket: process.env.storageBucket,
-  messagingSenderId: process.env.messagingSenderId,
-};
+  messagingSenderId: process.env.messagingSenderId
+}

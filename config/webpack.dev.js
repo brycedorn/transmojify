@@ -1,9 +1,9 @@
-const path = require('path');
-const webpack = require('webpack');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const srcDir = path.resolve(__dirname, '..', 'src');
-const distDir = path.resolve(__dirname, '..', 'dist');
+const srcDir = path.resolve(__dirname, '..', 'src')
+const distDir = path.resolve(__dirname, '..', 'dist')
 
 module.exports = {
   context: srcDir,
@@ -18,7 +18,7 @@ module.exports = {
     filename: 'main.bundle.js',
     path: distDir,
     publicPath: '/',
-    sourceMapFilename: 'main.map',
+    sourceMapFilename: 'main.map'
   },
 
   devServer: {
@@ -38,7 +38,7 @@ module.exports = {
         use: [{
           loader: 'babel-loader',
           options: { presets: ['es2015', 'react'] }
-        }],
+        }]
       },
       {
         test: /\.(s?)css$/,
@@ -46,8 +46,8 @@ module.exports = {
           'style-loader',
           'css-loader',
           'postcss-loader',
-          'sass-loader',
-        ],
+          'sass-loader'
+        ]
       },
       {
         test: /\.(jpg|jpeg|png|gif|ico|svg)$/,
@@ -55,8 +55,8 @@ module.exports = {
         query: {
           limit: 10000, // use data url for assets <= 10KB
           name: 'assets/[name].[hash].[ext]'
-        },
-      },
+        }
+      }
     ]
   },
 
@@ -72,6 +72,6 @@ module.exports = {
 
       filename: 'index.html'
       // the output file name
-    }),
-  ],
-};
+    })
+  ]
+}
