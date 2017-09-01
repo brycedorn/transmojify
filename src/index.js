@@ -8,6 +8,7 @@ import skeleton from 'skeleton-css-webpack'
 import moj from './moj.png'
 import circ from './circ.png'
 import cyclone from './cyclone.png'
+
 import("./index.scss")
 
 class ReactTransmojifier extends React.Component {
