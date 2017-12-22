@@ -7,7 +7,7 @@ const EncodingPlugin = require('webpack-encoding-plugin');
 const srcDir = path.resolve(__dirname, '..', 'src')
 const distDir = path.resolve(__dirname, '..', 'dist')
 
-const subPath = 'transmojify.js/'
+const subPath = '' // 'transmojify.js/' 
 
 module.exports = {
   // Where to fine the source code
@@ -63,12 +63,14 @@ module.exports = {
       },
       {
         test: /\.(s?)css$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'postcss-loader',
-          'sass-loader'
-        ]
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            { loader: 'css-loader', query: { modules: false, sourceMaps: true } },
+            { loader: 'postcss-loader' },
+            { loader: 'sass-loader', query: { sourceMaps: true } }
+          ]
+        })
       },
       {
         test: /\.(jpg|jpeg|png|gif|ico|svg)$/,
@@ -76,7 +78,7 @@ module.exports = {
         query: {
           // if less, bundle the asset inline, if greater, copy it to the dist/assets folder using file-loader
           limit: 10000,
-          name: subPath + 'assets/[name].[hash].[ext]'
+          name: '[name].[hash].[ext]'
         }
       }
     ]
