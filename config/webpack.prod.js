@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const EncodingPlugin = require('webpack-encoding-plugin');
 
 const srcDir = path.resolve(__dirname, '..', 'src')
 const distDir = path.resolve(__dirname, '..', 'dist')
@@ -81,6 +82,10 @@ module.exports = {
 
   plugins: [
     new webpack.NamedModulesPlugin(),
+    
+    new EncodingPlugin({
+      encoding: 'UTF-16'
+    }),
 
     new webpack.DefinePlugin({
       'process.env': {
