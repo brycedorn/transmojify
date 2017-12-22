@@ -7,6 +7,8 @@ const EncodingPlugin = require('webpack-encoding-plugin');
 const srcDir = path.resolve(__dirname, '..', 'src')
 const distDir = path.resolve(__dirname, '..', 'dist')
 
+const subPath = 'transmojify.js/'
+
 module.exports = {
   // Where to fine the source code
   context: srcDir,
@@ -28,7 +30,7 @@ module.exports = {
 
     // Wherever resource (css, js, img) you call <script src="..."></script>,
     // or css, or img use this path as the root
-    publicPath: '/'
+    publicPath: subPath,
 
     // At some point you'll have to debug your code, that's why I'm giving you
     // for free a source map file to make your life easier
@@ -74,7 +76,7 @@ module.exports = {
         query: {
           // if less, bundle the asset inline, if greater, copy it to the dist/assets folder using file-loader
           limit: 10000,
-          name: 'assets/[name].[hash].[ext]'
+          name: subPath + 'assets/[name].[hash].[ext]'
         }
       }
     ]
